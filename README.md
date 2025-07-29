@@ -2,7 +2,7 @@
 ## An extremely lightweight, low-level remastered version of the BF Esolang.
 
 ## What is TIRL++?
-TIRL++ (Tape Based Interperted Remastered Low-level Lightweight-language)  is a low level lightweight esolang based on brainfuck, ran based on a 110-130 line python interperter
+TIRL++ (Tape Based Interperted Remastered Low-level Lightweight-language)  is a low level lightweight esolang based on BF, ran based on a 110-130 line python interperter
 
 ## How to run TIRLL++?
 Download the interperter and make a file with a .bfpp or .bfa file extension at the end and start coding
