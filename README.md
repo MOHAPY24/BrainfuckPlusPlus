@@ -1,10 +1,10 @@
-# Brainfuck++
-## An extremely lightweight, low-level remastered version of the Brainfuck Esolang.
+# TIRLL++
+## An extremely lightweight, low-level remastered version of the BF Esolang.
 
-## What is Brainfuck++?
-Despair++ is a low level lightweight esolang based on brainfuck, ran based on a 110-130 line python interperter
+## What is TIRL++?
+TIRL++ (Tape Based Interperted Remastered Low-level Lightweight-language)  is a low level lightweight esolang based on brainfuck, ran based on a 110-130 line python interperter
 
-## How to run Brainfuck++?
+## How to run TIRLL++?
 Download the interperter and make a file with a .bfpp or .bfa file extension at the end and start coding
 the basic syntax are
 
