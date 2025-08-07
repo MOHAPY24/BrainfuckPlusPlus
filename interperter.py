@@ -9,7 +9,7 @@ tape = [0] * 3000
 pointer = 0
 code = ""
 variables = {}
-ver = 1.1.1
+ver = "1.1.1"
 
 
 if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
@@ -28,8 +28,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
             for char in text:
                 out += "+" * ord(char) + ".>"
             return out[:-1] + ","
-
-
+ 
         for line in code:
             line = line.strip()
 
@@ -74,13 +73,13 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 else:
                     break
             elif "," not in code:
-                raise SyntaxError("SyntaxError: file closer , not found at EOF")
+                raise SyntaxError("file closer , not found at EOF")
             elif "'" in line:
                 if comment_mode == True:
                     continue
                 else:
                     if tape[0] > 1:
-                        raise RuntimeError("RuntimeError: Cell 0 has information while trying to use function '")
+                        raise RuntimeError("Cell 0 has information while trying to use function '")
                     else:
                         save = tape[pointer]
                         pointer = 0
@@ -108,7 +107,8 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     tape.clear()
-                    tape[0] * 3000
+                    tape = [0] * 3000
+
 
             elif "_" in line:
                 continue
@@ -117,12 +117,9 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     continue
                 else:
-                    i = input(": ")
-                    if int(i) is int:
-                        tape[pointer] += i
-                    else:
-                        raise ValueError(f"Argument {i} is not a valid inttype.")
-
+                    i = int(input(": "))
+                    tape[pointer] += i
+                    continue
             elif "#" in line:
                 if comment_mode == True:
                     continue
@@ -138,6 +135,8 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
 
             elif ":" in line:
                 if comment_mode == True:
+                    continue
+                else:
                     print(tape[pointer])
 
             elif "=" in line:
@@ -154,4 +153,4 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
 
 
 else:
-    Exception("RuntimeError: No file found.")
+    raise RuntimeError("No file found.")
