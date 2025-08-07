@@ -122,8 +122,8 @@ Print Hello:
 🤘 Created By
 
 > 🧠 Momo (age 13 but smarter than half the devs on GitHub)
-🧪 Author of SimplaScript, Despair++, Leaf@Root, Custogotchi, and more
-🎓 100% certified CLI tape-based language enthusiast
+🧪 Author of Despair++, Leaf@Root, Custogotchi, and more
+🎓 100% certified tape-based language enthusiast
 
 
 
