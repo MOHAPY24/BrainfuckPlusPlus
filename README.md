@@ -28,6 +28,7 @@ BF++ is a low-level esoteric programming language with extended functionality ov
 
 ```bash
 python3 bfpp_interpreter.py your_file.bfpp
+```
 
 Make sure your file ends with a , (end-of-file marker), or the interpreter will yeet an error.
 
@@ -48,7 +49,6 @@ Symbol Function
 @ Print entire tape (does not clear cells)
 ! Clear current cell
 ? Clear all cells
-` `
 % Load saved value into current cell
 # Copy value from previous cell into current
 ' Move current cell’s value to cell 0 (unsafe)
