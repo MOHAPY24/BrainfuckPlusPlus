@@ -27,7 +27,7 @@ BF++ is a low-level esoteric programming language with extended functionality ov
 ## 🔧 How to Use
 
 ```bash
-python3 bfpp_interpreter.py your_file.bfpp
+python3 interpreter.py your_file.bfpp
 ```
 
 Make sure your file ends with a , (end-of-file marker), or the interpreter will yeet an error.
