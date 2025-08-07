@@ -1,41 +1,146 @@
-# TIRLL++
-## An extremely lightweight, low-level remastered version of the BF Esolang.
+# 🧠 Brainfuck++ (BF++) Interpreter
 
-## What is TIRL++?
-TIRL++ (Tape Based Interperted Remastered Low-level Lightweight-language)  is a low level lightweight esolang based on BF, ran based on a 110-130 line python interperter
+A lightweight, modernized esolang interpreter for **Brainfuck++**, the chaotic-genius cousin of the classic Brainfuck. Designed for experimenters, masochists, and bored geniuses who want to bend the very rules of logic into tape-based ASCII spaghetti.
 
-## How to run TIRLL++?
-Download the interperter and make a file with a .bfpp or .bfa file extension at the end and start coding
-the basic syntax are
+**Current Version:** `v1.1.1`  
+**Interpreter Language:** Python 3  
+**Tape Size:** 3000 cells  
+**File Extensions Supported:** `.bfpp`, `.bfa`
 
-">" - move the pointer to the next cell
+---
 
-"<" - move the pointer to the cell before it
+## 💡 What is Brainfuck++?
 
-"+" - add to the current cell
+BF++ is a low-level esoteric programming language with extended functionality over the classic Brainfuck. It’s not meant to be practical. It’s meant to be *fun*, *chaotic*, and surprisingly powerful if you hate yourself enough.
 
-"-" - remove from the current cell
+### 👾 BF++ Adds:
 
-"." - print current cell
+- ASCII character printing via `.`
+- Raw value printing via `:`
+- Cell clearing, full tape wiping, and selective assignment
+- Cell-saving & restoring
+- Interactivity with user input (`^`)
+- And more!
 
-"," - end file (needed at EOF or else syntax error will be raised)
+---
 
-"@" - print entire tape then make all cells in tape = 0
+## 🔧 How to Use
 
-"$" - start comment
+```bash
+python3 bfpp_interpreter.py your_file.bfpp
 
-"/" - end comment
-
-"*" - multiply the current cell by itself
-
-" ' " - take current cell contants and put into cell 0, also puts pointer back to cell 0
-
-"#" - Take the contants of the cell before the current cell into the current cell
-
-"|" - saves current cell contants
-
-"%" - loads saved cell contants in current cell
-
-More updates soon!
+Make sure your file ends with a , (end-of-file marker), or the interpreter will yeet an error.
 
 
+---
+
+🧠 BF++ Syntax Cheatsheet
+
+Symbol Function
+
++ Increment current cell
+- Decrement current cell
+> Move pointer right
+< Move pointer left
+. Print ASCII of current cell
+: Print raw value of current cell
+, End the program
+@ Print entire tape (does not clear cells)
+! Clear current cell
+? Clear all cells
+` `
+% Load saved value into current cell
+# Copy value from previous cell into current
+' Move current cell’s value to cell 0 (unsafe)
+= Copy value from next cell into current cell
+_ Null command (does nothing)
+^ Take integer input into current cell
+$ ... / Comments
+
+
+
+---
+
+🚨 Error Handling
+
+Errors are now handled professionally using Python’s built-in error types:
+
+SyntaxError for missing EOF markers
+
+RuntimeError for improper cell manipulations
+
+FileNotFoundError if no valid .bfpp file is found
+
+ValueError for bad input or illegal ASCII
+
+IndexError if pointer tries to go out of bounds
+
+
+
+---
+
+📦 DevLog Highlights (v1.1.1)
+
+✅ Added proper ASCII support
+
+✅ Removed sassy legacy errors (RIP Despair++)
+
+✅ Interactivity support with ^
+
+✅ Improved error handling
+
+✅ Increased tape size to 3000 cells
+
+✅ Added null _, input ^, and assign =
+
+
+
+---
+
+❗ Known Quirks
+
+Still no loop support. It’s intentional for now.
+
+Tape is 1-indexed for ASCII operations—don’t forget that 😤
+
+Use only .bfpp or .bfa extensions or it’ll yell at you.
+
+
+
+---
+
+🧠 Example Program
+
+Print Hello:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.
+,
+
+
+---
+
+🤘 Created By
+
+> 🧠 Momo (age 13 but smarter than half the devs on GitHub)
+🧪 Author of SimplaScript, Despair++, Leaf@Root, Custogotchi, and more
+🎓 100% certified CLI tape-based language enthusiast
+
+
+
+
+---
+
+📜 License
+
+MIT License. Do whatever.
+
+
+---
+
+🌐 Final Thoughts
+
+> You will basically never need this, but it exists.
+
+
+
+Welcome to the BF++ Institute.
