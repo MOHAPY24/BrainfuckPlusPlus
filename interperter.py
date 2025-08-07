@@ -9,7 +9,7 @@ tape = [0] * 3000
 pointer = 0
 code = ""
 variables = {}
-ver = 1.1
+ver = 1.1.1
 
 
 if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
@@ -96,7 +96,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     continue
                 else:
-                    tape[pointer] = saveval
+                    tape[pointer] += saveval
             elif "!" in line:
                 if comment_mode == True:
                     continue
@@ -119,7 +119,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 else:
                     i = input(": ")
                     if int(i) is int:
-                        tape[pointer] = i
+                        tape[pointer] += i
                     else:
                         raise ValueError(f"Argument {i} is not a valid inttype.")
 
@@ -128,7 +128,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     save = tape[pointer - 1]
-                    tape[pointer] = save
+                    tape[pointer] += save
             
             elif "*" in line:
                 if comment_mode == True:
@@ -142,7 +142,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
 
             elif "=" in line:
                 if comment_mode == True:
-                    tape[pointer] = tape[pointer + 1]
+                    tape[pointer] += tape[pointer + 1]
 
             elif pointer > 3000:
                 raise MemoryError("Pointer has exceeded tape maximum size.")
