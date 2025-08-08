@@ -40,24 +40,24 @@ Make sure your file ends with a `,` (end-of-file marker) and starts with a `&` (
 
 Symbol Function
 
-+ Increment current cell
-- Decrement current cell
-> Move pointer right
-< Move pointer left
-. Print ASCII of current cell
-: Print raw value of current cell
-, End the program
-@ Print entire tape (does not clear cells)
-! Clear current cell
-? Clear all cells
-% Load saved value into current cell
-# Copy value from previous cell into current
-' Move current cell’s value to cell 0 (unsafe)
-= Copy value from next cell into current cell
-_ Null command (does nothing)
-& Start the program
-^ Take integer input into current cell
-$ ... / Comments
+"+" Increment current cell
+"-" Decrement current cell
+">" Move pointer right
+"<" Move pointer left
+"." Print ASCII of current cell
+":" Print raw value of current cell
+"," End the program
+"@" Print entire tape (does not clear cells)
+"!" Clear current cell
+"?" Clear all cells
+"%" Load saved value into current cell
+"#" Copy value from previous cell into current
+" ' " Move current cell’s value to cell 0 (unsafe)
+"=" Copy value from next cell into current cell
+"_" Null command (does nothing)
+"&" Start the program
+"^" Take integer input into current cell
+"$ ... /" Comments
 
 
 
