@@ -2,7 +2,7 @@
 
 A lightweight, modernized esolang interpreter for **Brainfuck++**, the chaotic-genius cousin of the classic Brainfuck. Designed for experimenters, masochists, and bored geniuses who want to bend the very rules of logic into tape-based ASCII spaghetti.
 
-**Current Version:** `v1.1.1`  
+**Current Version:** `v1.1.2`  
 **Interpreter Language:** Python 3  
 **Tape Size:** 3000 cells  
 **File Extensions Supported:** `.bfpp`, `.bfa`
@@ -13,13 +13,14 @@ A lightweight, modernized esolang interpreter for **Brainfuck++**, the chaotic-g
 
 BF++ is a low-level esoteric programming language with extended functionality over the classic Brainfuck. It’s not meant to be practical. It’s meant to be *fun*, *chaotic*, and surprisingly powerful if you hate yourself enough.
 
-### 👾 BF++ Adds:
+### 👾 BF++ 1.1.1-1.1.2 Adds:
 
 - ASCII character printing via `.`
 - Raw value printing via `:`
 - Cell clearing, full tape wiping, and selective assignment
 - Cell-saving & restoring
 - Interactivity with user input (`^`)
+- SOF Identifier `&`
 - And more!
 
 ---
@@ -54,6 +55,7 @@ Symbol Function
 ' Move current cell’s value to cell 0 (unsafe)
 = Copy value from next cell into current cell
 _ Null command (does nothing)
+& Start the program
 ^ Take integer input into current cell
 $ ... / Comments
 
@@ -65,13 +67,11 @@ $ ... / Comments
 
 Errors are now handled professionally using Python’s built-in error types:
 
-SyntaxError for missing EOF markers
+SyntaxError for missing EOF, SOF or incorrect syntax and markers
 
 RuntimeError for improper cell manipulations
 
 FileNotFoundError if no valid .bfpp file is found
-
-ValueError for bad input or illegal ASCII
 
 IndexError if pointer tries to go out of bounds
 
