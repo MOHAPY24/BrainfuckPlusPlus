@@ -36,34 +36,51 @@ Make sure your file ends with a `,` (end-of-file marker) and starts with a `&` (
 
 ---
 
-🧠 BF++ Syntax Cheatsheet
+## 🧠 BF++ Syntax Cheatsheet
 
 Symbol Function
 
 "+" Increment current cell
+
 "-" Decrement current cell
+
 ">" Move pointer right
+
 "<" Move pointer left
+
 "." Print ASCII of current cell
+
 ":" Print raw value of current cell
+
 "," End the program
+
 "@" Print entire tape (does not clear cells)
+
 "!" Clear current cell
+
 "?" Clear all cells
+
 "%" Load saved value into current cell
+
 "#" Copy value from previous cell into current
+
 " ' " Move current cell’s value to cell 0 (unsafe)
+
 "=" Copy value from next cell into current cell
+
 "_" Null command (does nothing)
+
 "&" Start the program
+
 "^" Take integer input into current cell
+
 "$ ... /" Comments
 
 
 
 ---
 
-🚨 Error Handling
+## 🚨 Error Handling
 
 Errors are now handled professionally using Python’s built-in error types:
 
@@ -79,19 +96,21 @@ IndexError if pointer tries to go out of bounds
 
 ---
 
-📦 DevLog Highlights (v1.1.1)
+📦 DevLog Highlights (v1.1.1-1.1.2)
 
 ✅ Added proper ASCII support
 
 ✅ Removed sassy legacy errors (RIP Despair++)
 
-✅ Interactivity support with ^
+✅ Interactivity support with `^`
 
 ✅ Improved error handling
 
 ✅ Increased tape size to 3000 cells
 
-✅ Added null _, input ^, and assign =
+✅ Added null `_`, input `^`, and nextval `=`
+
+✅ added an SOF marker `&`
 
 
 
