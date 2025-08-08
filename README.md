@@ -96,7 +96,7 @@ IndexError if pointer tries to go out of bounds
 
 ---
 
-📦 DevLog Highlights (v1.1.1-1.1.2)
+## 📦 DevLog Highlights (v1.1.1-1.1.2)
 
 ✅ Added proper ASCII support
 
@@ -116,7 +116,7 @@ IndexError if pointer tries to go out of bounds
 
 ---
 
-❗ Known Quirks
+## ❗ Known Quirks
 
 Still no loop support. It’s intentional for now.
 
@@ -128,7 +128,7 @@ Use only .bfpp or .bfa extensions or it’ll yell at you.
 
 ---
 
-🧠 Example Program
+## 🧠 Example Program
 
 Print Hello:
 
@@ -138,7 +138,7 @@ Print Hello:
 
 ---
 
-🤘 Created By
+## 🤘 Created By
 
 > 🧠 Momo (age 13 but smarter than half the devs on GitHub)
 🧪 Author of Despair++, Leaf@Root, Custogotchi, and more
@@ -156,7 +156,7 @@ MIT License. Do whatever.
 
 ---
 
-🌐 Final Thoughts
+## 🌐 Final Thoughts
 
 > You will basically never need this, but it exists.
 
