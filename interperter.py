@@ -9,34 +9,39 @@ tape = [0] * 3000
 pointer = 0
 code = ""
 variables = {}
-ver = "1.1.1"
+ver = "1.1.2"
 
 
 if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
     with open(sys.argv[1], "r") as fl:
         print(sys.argv[1] + f", version {ver}")
-        content = fl.read()
+        code = fl.read()
         global comment_mode
         comment_mode = False
-        content = content.strip()
-        code = content
-        pc = 0
-        loop_stack = []
+        code = code.strip()
+
 
         def bfpp_gen(text):
-            out = ""
+            out = "&"
             for char in text:
-                out += "+" * ord(char) + ".>"
-            return out[:-1] + ","
- 
+               out += "+" * ord(char) + ".>"
+               return out[:-1] + ","
+
+        if code.startswith("&") != True:
+            raise SyntaxError("SOF identifier '&' not located in file.")
+
+        #with open(sys.argv[1], "w") as f:
+            #f.write(bfpp_gen(input(": ")))
+            #f.close()
+
         for line in code:
-            line = line.strip()
 
             if "$" in line:
                 comment_mode = True
                 continue
             elif "/" in line:
                 comment_mode = False
+            
             elif ">" in line:
                 if comment_mode == True:
                     continue
@@ -51,7 +56,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     continue
                 else:
-                    print(chr(tape[pointer]), end='')
+                    print(chr(tape[pointer]))
             elif "+" in line:
                 if comment_mode == True:
                     continue
@@ -78,19 +83,17 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     continue
                 else:
-                    if tape[0] > 1:
-                        raise RuntimeError("Cell 0 has information while trying to use function '")
-                    else:
-                        save = tape[pointer]
-                        pointer = 0
-                        tape[pointer] = save
+                    save = tape[pointer]
+                    pointer = 0
+                    tape[pointer] = save
             elif "|" in line:
                 if comment_mode == True:
                     continue
                 else:
                     global savepoint
                     global saveval
-                    saveval = tape[pointer] 
+                    saveval = tape[pointer]
+
             elif "%" in line: 
                 if comment_mode == True:
                     continue
@@ -102,13 +105,15 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 else:
                     tape[pointer] = 0
 
+            elif line.isspace():
+                continue
+
             elif "?" in line:
                 if comment_mode == True:
                     continue
                 else:
                     tape.clear()
                     tape = [0] * 3000
-
 
             elif "_" in line:
                 continue
@@ -143,14 +148,17 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     tape[pointer] += tape[pointer + 1]
 
-            elif pointer > 3000:
+            elif pointer > 2999:
                 raise MemoryError("Pointer has exceeded tape maximum size.")
 
             else:
-               raise SyntaxError(f"Character {line} is not defined or a valid argument.")
+                if "&" in line:
+                    continue
+                else:
+                    raise SyntaxError(f"Character {line} is not defined or a valid argument.")
 
 
 
 
-else:
+elif sys.argv[1] is not file_extensions[1] or sys.argv[1] is not file_extensions[0]:
     raise RuntimeError("No file found.")
