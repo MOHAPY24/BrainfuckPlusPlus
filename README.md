@@ -95,7 +95,7 @@ python3 interpreter.py urfile.nova
 
 ---
 
-##🧠 Philosophy
+## 🧠 Philosophy
 
 Novaxis keeps the low-level mental challenge of Brainfuck but removes arbitrary limitations.
 It’s not about being the shortest — it’s about complete mastery over your tape.
@@ -106,12 +106,12 @@ this is the new axis.
 
 ---
 
-##📜 License
+## 📜 License
 
 MIT — Fork, modify, experiment, share.
 
 
 ---
 
-Novaxis — Where the tape becomes the universe.
+### Novaxis — Where the tape becomes the universe.
 
