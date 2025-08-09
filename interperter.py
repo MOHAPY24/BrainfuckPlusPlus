@@ -4,19 +4,23 @@ import math
 import os
 import sys
 
-file_extensions = [".bfpp", ".bfa"]
-tape = [0] * 3000
+file_extensions = [".nv", ".nva", ".nova"]
+tape = [0] 
 pointer = 0
 code = ""
+loop_stack = []
 variables = {}
-ver = "1.1.2"
+ver = "1.1.3"
+pc = 0
 
 
 if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
     with open(sys.argv[1], "r") as fl:
-        print(sys.argv[1] + f", version {ver}")
+        print(sys.argv[1] + f", novaxis version {ver}")
         code = fl.read()
         global comment_mode
+        global saveval
+        saveval = 0
         comment_mode = False
         code = code.strip()
 
@@ -35,7 +39,6 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
             #f.close()
 
         for line in code:
-
             if "$" in line:
                 comment_mode = True
                 continue
@@ -47,6 +50,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     pointer += 1
+                    tape.append(0)
             elif "<" in line:
                 if comment_mode == True:
                     continue
@@ -62,6 +66,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     tape[pointer] += 1
+                    tape.append(0)
             elif "-" in line:
                 if comment_mode == True:
                     continue
@@ -72,11 +77,28 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     print(tape)
+            elif "'" in line:
+                if comment_mode == True:
+                    continue
+                else:
+                    save = tape[pointer]
+                    pointer = 0
+                    tape[pointer] = save
+
+
             elif "," in line:
                 if comment_mode == True:
                     continue
                 else:
-                    break
+                    x = 0
+                    for i in tape:
+                        if i == 0:
+                            x += 1
+                    if x > 3:
+                        raise MemoryError("over 3 inactive cells remain at EOF, excessive garbage load")
+                    else:
+                        print("exitied with 0 errors.")
+                        break
             elif "," not in code:
                 raise SyntaxError("file closer , not found at EOF")
             elif "'" in line:
@@ -91,8 +113,8 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     global savepoint
-                    global saveval
                     saveval = tape[pointer]
+                    tape.append(0)
 
             elif "%" in line: 
                 if comment_mode == True:
@@ -113,7 +135,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                     continue
                 else:
                     tape.clear()
-                    tape = [0] * 3000
+                    tape = [0] * len(tape)
 
             elif "_" in line:
                 continue
@@ -124,6 +146,7 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 else:
                     i = int(input(": "))
                     tape[pointer] += i
+                    tape.append(0)
                     continue
             elif "#" in line:
                 if comment_mode == True:
@@ -131,12 +154,14 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 else:
                     save = tape[pointer - 1]
                     tape[pointer] += save
+                    tape.append(0)
             
             elif "*" in line:
                 if comment_mode == True:
                     continue
                 else:
                     tape[pointer] = tape[pointer] * tape[pointer]
+                    tape.append(0)
 
             elif ":" in line:
                 if comment_mode == True:
@@ -148,14 +173,28 @@ if file_extensions[0] in sys.argv[1] or file_extensions[1] in sys.argv[1]:
                 if comment_mode == True:
                     tape[pointer] += tape[pointer + 1]
 
-            elif pointer > 2999:
-                raise MemoryError("Pointer has exceeded tape maximum size.")
+
+
+            elif "{" in line:
+                cll = int(code[code.index(line) + 1])
+                if tape[pointer] == 0:
+                    if cll > len(tape):
+                        while cll > len(tape):
+                            tape.append(0)
+
+                    tape.append(0)
+                    pointer = cll
 
             else:
                 if "&" in line:
                     continue
+
+                elif isinstance(int(line), int) == True:
+                    continue
+
                 else:
                     raise SyntaxError(f"Character {line} is not defined or a valid argument.")
+            
 
 
 
