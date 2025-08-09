@@ -15,6 +15,7 @@ That means:
 - Cleaner control flow with direct cell jumps.
 - Modern syntax rules for a structured feel.
 - Infinite tape by design.
+- Interperted or Compiled, up to you!
 
 ---
 
@@ -39,7 +40,7 @@ That means:
 | `.` | Print current cell as ASCII |
 | `@` | Print entire tape contents |
 | `,` | End program (required) |
-| ` straight line symbol ` | Save current cell value |
+| ` straight line symbol ` | Save current cell value ( this is `r` on the compiled version) |
 | `%` | Load saved value into current cell |
 | `*` | Square current cell value |
 | `#` | Add value from cell before into current cell |
