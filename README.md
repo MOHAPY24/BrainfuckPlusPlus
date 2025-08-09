@@ -1,165 +1,126 @@
-# 🧠 Brainfuck++ (BF++) Interpreter
+# 🌌 NOVAXIS — The New Axis of Esoteric Programming
 
-A lightweight, modernized esolang interpreter for **Brainfuck++**, the chaotic-genius cousin of the classic Brainfuck. Designed for experimenters, masochists, and bored geniuses who want to bend the very rules of logic into tape-based ASCII spaghetti.
 
-**Current Version:** `v1.1.2`  
-**Interpreter Language:** Python 3  
-**Tape Size:** 3000 cells  
-**File Extensions Supported:** `.bfpp`, `.bfa`
+
+  _   _  ______      __     __   _______  _____ 
+ | \ | |/ __ \ \    / /\    \ \ / /_   _|/ ____|
+ |  \| | |  | \ \  / /  \    \ V /  | | | (___  
+ | . ` | |  | |\ \/ / /\ \    > <   | |  \___ \ 
+ | |\  | |__| | \  / ____ \  / . \ _| |_ ____) |
+ |_| \_|\____/   \/_/    \_\/_/ \_\_____|_____/ 
+                                                
+                                                                                                   
+
+## 💡 What is Novaxis?
+
+Novaxis is a **modern esoteric language** evolved from Brainfuck.  
+It’s built for **control, precision, and raw minimalism** — where every symbol has weight and the tape is your entire universe.
+
+The design goal is simple:  
+> **Keep the soul of Brainfuck, but give it a 21st-century upgrade.**
+
+That means:
+- Extended instruction set.
+- Cleaner control flow with direct cell jumps.
+- Modern syntax rules for a structured feel.
+- Infinite tape by design.
 
 ---
 
-## 💡 What is Brainfuck++?
+## ⚙️ Core Features
 
-BF++ is a low-level esoteric programming language with extended functionality over the classic Brainfuck. It’s not meant to be practical. It’s meant to be *fun*, *chaotic*, and surprisingly powerful if you hate yourself enough.
-
-### 👾 BF++ 1.1.1-1.1.2 Adds:
-
-- ASCII character printing via `.`
-- Raw value printing via `:`
-- Cell clearing, full tape wiping, and selective assignment
-- Cell-saving & restoring
-- Interactivity with user input (`^`)
-- SOF Identifier `&`
-- And more!
+- **Direct Cell Jumps** — Use `{n` to jump to any cell instantly if the current cell isn’t zero.
+- **Infinite Memory Tape** — Move as far left or right as needed.
+- **Extended Arithmetic** — Square, add from neighbors, store and recall values.
+- **Readable, Commentable Code** — `$.../` lets you annotate freely.
+- **Structured File Format** — Must start with `&` and end with `,` for clarity and parsing safety.
 
 ---
 
-## 🔧 How to Use
+## 🔠 Instruction Set
 
-```bash
-python3 interpreter.py your_file.bfpp
+| Symbol | Description |
+|--------|-------------|
+| `+` | Increment current cell value |
+| `-` | Decrement current cell value |
+| `>` | Move pointer right |
+| `<` | Move pointer left |
+| `.` | Print current cell as ASCII |
+| `@` | Print entire tape contents |
+| `,` | End program (required) |
+| `|` | Save current cell value |
+| `%` | Load saved value into current cell |
+| `*` | Square current cell value |
+| `#` | Add value from cell before into current cell |
+| `'` | Move current cell value to cell 0 & jump pointer to cell 0 |
+| `=` | Add value from cell ahead into current cell |
+| `$.../` | Block comment |
+| `^` | Take integer input & add to current cell |
+| `:` | Print raw numeric value of current cell |
+| `{n` | Jump to cell `n` if current cell is non-zero |
+| `!` | Clear current cell |
+| `?` | Clear all cells |
+| `&` | Start of file marker |
+
+---
+
+## 📂 File Format
+
+**Extensions:**  
+`.nva`, `.nv`, `.nova`
+
+**Structure Rules:**
+- Program **must** start with `&`
+- Program **must** end with `,`
+- Code after `,` will be ignored
+- Whitespace and newlines are ignored
+
+---
+
+## 🚀 Example Programs
+
+**Hello World**
+```nva
+&++++++++++*++++.---.++++++..+++.>++++++*----.>++++++++++*+++++++++++++++++++.--------.+++.----------.--------.",
+```
+"Hi"
+```
+&++++++++++*++++.+.",
+```
+Useless Pointer Chaos
+```
+&+++-*>++:*{1>{2:++*>{1:",
 ```
 
-Make sure your file ends with a `,` (end-of-file marker) and starts with a `&` (start-of-file marker) or the interpreter will yeet an error.
+---
+
+## 🔧 Running Novaxis
+
+```
+git clone https://github.com/MOHAPY24/novaxis
+cd novaxis
+python3 interpreter.py urfile.nova
+```
+
+---
+
+##🧠 Philosophy
+
+Novaxis keeps the low-level mental challenge of Brainfuck but removes arbitrary limitations.
+It’s not about being the shortest — it’s about complete mastery over your tape.
+
+If you want a pure, modern esolang experience that rewards skill and planning,
+this is the new axis.
 
 
 ---
 
-## 🧠 BF++ Syntax Cheatsheet
+##📜 License
 
-Symbol Function
-
-"+" Increment current cell
-
-"-" Decrement current cell
-
-">" Move pointer right
-
-"<" Move pointer left
-
-"." Print ASCII of current cell
-
-":" Print raw value of current cell
-
-"," End the program
-
-"@" Print entire tape (does not clear cells)
-
-"!" Clear current cell
-
-"?" Clear all cells
-
-"%" Load saved value into current cell
-
-"#" Copy value from previous cell into current
-
-" ' " Move current cell’s value to cell 0 (unsafe)
-
-"=" Copy value from next cell into current cell
-
-"_" Null command (does nothing)
-
-"&" Start the program
-
-"^" Take integer input into current cell
-
-"$ ... /" Comments
-
+MIT — Fork, modify, experiment, share.
 
 
 ---
 
-## 🚨 Error Handling
+Novaxis — Where the tape becomes the universe.
 
-Errors are now handled professionally using Python’s built-in error types:
-
-SyntaxError for missing EOF, SOF or incorrect syntax and markers
-
-RuntimeError for improper cell manipulations
-
-FileNotFoundError if no valid .bfpp file is found
-
-IndexError if pointer tries to go out of bounds
-
-
-
----
-
-## 📦 DevLog Highlights (v1.1.1-1.1.2)
-
-✅ Added proper ASCII support
-
-✅ Removed sassy legacy errors (RIP Despair++)
-
-✅ Interactivity support with `^`
-
-✅ Improved error handling
-
-✅ Increased tape size to 3000 cells
-
-✅ Added null `_`, input `^`, and nextval `=`
-
-✅ added an SOF marker `&`
-
-
-
----
-
-## ❗ Known Quirks
-
-Still no loop support. It’s intentional for now.
-
-Tape is 1-indexed for ASCII operations—don’t forget that 😤
-
-Use only .bfpp or .bfa extensions or it’ll yell at you.
-
-
-
----
-
-## 🧠 Example Program
-
-Print Hello:
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.
-,
-
-
----
-
-## 🤘 Created By
-
-> 🧠 Momo (age 13 but smarter than half the devs on GitHub)
-🧪 Author of Despair++, Leaf@Root, Custogotchi, and more
-🎓 100% certified tape-based language enthusiast
-
-
-
-
----
-
-📜 License
-
-MIT License. Do whatever.
-
-
----
-
-## 🌐 Final Thoughts
-
-> You will basically never need this, but it exists.
-
-
-
-Welcome to the BF++ Institute.
