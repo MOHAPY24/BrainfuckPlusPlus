@@ -5,7 +5,7 @@
 ## 💡 What is Novaxis?
 
 Novaxis is a **modern esoteric language** evolved from Brainfuck.  
-It’s built for **control, precision, and raw minimalism** — where every symbol has weight and the tape is your entire universe.
+It’s built for **control, precision, and raw minimalism** — where every symbol has weight and the tape is your entire universe. With two versions for an Interperter or Compiler, both running on Python.
 
 The design goal is simple:  
 > **Keep the soul of Brainfuck, but give it a 21st-century upgrade.**
@@ -21,7 +21,7 @@ That means:
 ## ⚙️ Core Features
 
 - **Direct Cell Jumps** — Use `{n` to jump to any cell instantly if the current cell isn’t zero.
-- **Infinite Memory Tape** — Move as far left or right as needed.
+- **Infinite Memory Tape** — Move as far right as needed.
 - **Extended Arithmetic** — Square, add from neighbors, store and recall values.
 - **Readable, Commentable Code** — `$.../` lets you annotate freely.
 - **Structured File Format** — Must start with `&` and end with `,` for clarity and parsing safety.
@@ -92,7 +92,11 @@ git clone https://github.com/MOHAPY24/novaxis
 cd novaxis
 python3 interpreter.py urfile.nova
 ```
-
+or
+```
+python3 compiler.py urfile.nova
+python3 compiled.py
+```
 ---
 
 ## 🧠 Philosophy
