@@ -39,7 +39,7 @@ That means:
 | `.` | Print current cell as ASCII |
 | `@` | Print entire tape contents |
 | `,` | End program (required) |
-| `|` | Save current cell value |
+| ` straight line symbol ` | Save current cell value |
 | `%` | Load saved value into current cell |
 | `*` | Square current cell value |
 | `#` | Add value from cell before into current cell |
